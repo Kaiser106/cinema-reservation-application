@@ -1,13 +1,11 @@
 package com.cinema.domain.reservation;
 
-import lombok.Getter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Getter
 public class Reservation {
     private UUID id;
     private UUID userId;
@@ -18,7 +16,6 @@ public class Reservation {
     private LocalDateTime expiresAt;
 
     private List<ReservationSeat> seats;
-
 
     public Reservation(UUID userId, UUID sessionId) {
         this.id = UUID.randomUUID();
@@ -53,4 +50,13 @@ public class Reservation {
     public void cancel() {
         this.status = ReservationStatus.CANCELLED;
     }
+
+    public UUID getId() { return id; }
+    public UUID getUserId() { return userId; }
+    public UUID getSessionId() { return sessionId; }
+    public ReservationStatus getStatus() { return status; }
+    public BigDecimal getTotalPrice() { return totalPrice; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public LocalDateTime getExpiresAt() { return expiresAt; }
+    public List<ReservationSeat> getSeats() { return seats; }
 }
